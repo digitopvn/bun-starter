@@ -2,7 +2,7 @@
 
 [![CodeQL](https://github.com/milliorn/bunjs-starter/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/milliorn/bunjs-starter/actions/workflows/github-code-scanning/codeql)
 
-This is a starter repo for Bun.js is a JavaScript runtime, bundler, toolkit.   It is designed to be a simple, fast, and easy to use tool for JavaScript developers.
+This is a starter repo for Bun.js is a JavaScript runtime, bundler, toolkit. It is designed to be a simple, fast, and easy to use tool for JavaScript developers.
 
 # Table of Contents
 
@@ -10,20 +10,20 @@ This is a starter repo for Bun.js is a JavaScript runtime, bundler, toolkit.   I
 2. [Bun.js Website](#bunjs-website)
 3. [Install Bun.js](#install-bunjs)
 4. [Getting Started](#getting-started)
-   - [Quickstart](#quickstart)
-   - [Run a File](#run-a-file)
+    - [Quickstart](#quickstart)
+    - [Run a File](#run-a-file)
 5. [Running Modes and Environment Configuration](#running-modes-and-environment-configuration)
-   - [Watch Mode](#watch-mode)
-   - [Hot Mode](#hot-mode)
-   - [Environment Variables](#environment-variables)
+    - [Watch Mode](#watch-mode)
+    - [Hot Mode](#hot-mode)
+    - [Environment Variables](#environment-variables)
 6. [Working with Routes and File I/O](#working-with-routes-and-file-io)
-   - [Routes](#routes)
-   - [File I/O](#file-io)
+    - [Routes](#routes)
+    - [File I/O](#file-io)
 7. [Bun X](#bun-x)
 8. [Examples](#examples)
 9. [Testing and Bundling](#testing-and-bundling)
-   - [Bun Test](#bun-test)
-   - [Bundler](#bundler)
+    - [Bun Test](#bun-test)
+    - [Bundler](#bundler)
 10. [Macros](#macros)
 
 ## Bun.js Website
@@ -97,9 +97,9 @@ Now, open `package.json` in your editor. You can add this to your scripts:
 
 ```json
 {
-  "scripts": {
-    "start": "bun run server.ts"
-  }
+	"scripts": {
+		"start": "bun run server.ts"
+	}
 }
 ```
 
@@ -112,13 +112,13 @@ bun run start
 Now, open `server.ts` in your editor and paste the following code:
 
 ```ts
-console.log("Hello via Bun!");
+console.log('Hello via Bun!');
 
 const server = Bun.serve({
-  port: 3000,
-  fetch(req) {
-    return new Response("Bun!");
-  },
+	port: 3000,
+	fetch(req) {
+		return new Response('Bun!');
+	},
 });
 
 console.log(`Listening on http://localhost:${server.port}`);
@@ -171,13 +171,13 @@ port: process.env.PORT || 3001;
 Should look like this:
 
 ```ts
-console.log("Hello via Bun!");
+console.log('Hello via Bun!');
 
 const server = Bun.serve({
-  port: process.env.PORT || 3001,
-  fetch(req) {
-    return new Response("Bun run!");
-  },
+	port: process.env.PORT || 3001,
+	fetch(req) {
+		return new Response('Bun run!');
+	},
 });
 
 console.log(`Listening on http://localhost:${server.port}`);
@@ -194,23 +194,23 @@ port: Bun.env.PORT || 3001;
 We can create simple routes:
 
 ```ts
-console.log("Hello via Bun!");
+console.log('Hello via Bun!');
 
 const server = Bun.serve({
-  port: process.env.PORT || 3001,
-  fetch(req) {
-    const url = new URL(req.url);
+	port: process.env.PORT || 3001,
+	fetch(req) {
+		const url = new URL(req.url);
 
-    if (url.pathname === "/") {
-      return new Response("Hello World!");
-    } else if (url.pathname === "/json") {
-      return new Response(JSON.stringify({ hello: "world" }), {
-        headers: { "content-type": "application/json" },
-      });
-    } else {
-      return new Response("Not Found", { status: 404 });
-    }
-  },
+		if (url.pathname === '/') {
+			return new Response('Hello World!');
+		} else if (url.pathname === '/json') {
+			return new Response(JSON.stringify({ hello: 'world' }), {
+				headers: { 'content-type': 'application/json' },
+			});
+		} else {
+			return new Response('Not Found', { status: 404 });
+		}
+	},
 });
 
 console.log(`Listening on http://localhost:${server.port}`);
@@ -248,9 +248,9 @@ See [File I/O](https://bun.sh/docs/api/file-io) for more details.
 Make a new file called `writeFile.ts` or whatever you want it to be in the root of your project and add the following text:
 
 ```ts
-const dummyData = "Hello World!";
+const dummyData = 'Hello World!';
 
-await Bun.write("writeFile.txt", dummyData);
+await Bun.write('writeFile.txt', dummyData);
 ```
 
 If you don't use `writeFile.ts` as the name of the file, make sure to change the name in the parameter of `Bun.write()`.
@@ -266,7 +266,7 @@ You should see a new file called `writeFile.txt` in the root of your project wit
 To read the file, make a new file called `readFile.ts` or whatever you want it to be in the root of your project and add the following text:
 
 ```ts
-const readFlie = Bun.file("writeFile.txt");
+const readFlie = Bun.file('writeFile.txt');
 console.log(await readFlie.text());
 ```
 
@@ -283,12 +283,12 @@ See [bun test](https://bun.sh/docs/cli/test) for more details.
 Bun.js comes with a built-in test runner. To run tests, create a file called `index.test.ts` or whatever you want it to be in the root of your project and add the following text:
 
 ```ts
-import { describe, expect, test, beforeAll } from "bun:test";
+import { describe, expect, test, beforeAll } from 'bun:test';
 
-describe("math", () => {
-  test("logic", () => {
-    expect(1).toBe(1);
-  });
+describe('math', () => {
+	test('logic', () => {
+		expect(1).toBe(1);
+	});
 });
 ```
 
@@ -315,21 +315,21 @@ See [Bundler](https://bun.sh/docs/bundler) for more details.
 Bun.js comes with a built-in bundler. To bundle your code, create a file called `index.ts` or whatever you want it to be in `src` folder of your project and add the following text:
 
 ```ts
-import axios from "axios";
+import axios from 'axios';
 
 async function fetchUser(user: string) {
-  try {
-    const response = await axios.get(`https://api.github.com/users/${user}`);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching user:", error);
-    throw error;
-  }
+	try {
+		const response = await axios.get(`https://api.github.com/users/${user}`);
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching user:', error);
+		throw error;
+	}
 }
 
-fetchUser("milliorn")
-  .then((data) => console.log("User data:", data))
-  .catch((error) => console.error("Error:", error));
+fetchUser('milliorn')
+	.then((data) => console.log('User data:', data))
+	.catch((error) => console.error('Error:', error));
 ```
 
 Now you can bundle the code with:
@@ -350,7 +350,7 @@ Create a file called `random.ts` or whatever you want it to be in `src` folder o
 
 ```ts
 export function random() {
-  return Math.random();
+	return Math.random();
 }
 ```
 

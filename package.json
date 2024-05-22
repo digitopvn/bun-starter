@@ -6,15 +6,97 @@
     "dev": "bun --hot --watch server.ts",
     "hot": "bun --hot server.ts",
     "start": "bun run server.ts",
-    "watch": "bun --watch server.ts"
+    "watch": "bun --watch server.ts",
+    "lint": "eslint",
+    "format": "eslint --fix && prettier . --write",
+    "check-secret": "node .husky/check-secret.js",
+    "check-types": "tsc --noEmit --pretty",
+    "commit": "bun run format && git add . && cz && git merge origin/main -m \"chore(PR): Merged from origin/main\" --no-ff && git push origin && exit 0",
+    "prepare": "husky",
+    "set-permission": "run-script-os",
+    "set-permission:win32": "",
+    "set-permission:darwin:linux": "chmod -R +x ./.husky",
+    "set-permission:default": "chmod -R +x ./.husky"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
+  },
+  "release": {
+    "branches": [
+      "main",
+      {
+        "name": "dev",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/git",
+      [
+        "@semantic-release/github",
+        {
+          "successComment": false,
+          "failTitle": false
+        }
+      ]
+    ]
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@commitlint/cz-commitlint": "^19.2.0",
+    "@eslint/js": "^9.3.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^12.0.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.0.4",
+    "@semantic-release/release-notes-generator": "^13.0.0",
+    "@types/eslint": "^8.56.10",
+    "@types/lodash": "^4.17.4",
+    "@types/node": "^20.12.12",
+    "@types/prettier": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "@typescript-eslint/parser": "^7.10.0",
+    "bun-types": "latest",
+    "chalk": "^5.3.0",
+    "commitizen": "^4.3.0",
+    "cross-env": "^7.0.3",
+    "eslint": "9.x",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-simple-import-sort": "^12.1.0",
+    "eslint-plugin-unused-imports": "^3.2.0",
+    "globals": "^15.3.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.4",
+    "prettier": "^3.2.5",
+    "run-script-os": "^1.1.6",
+    "semantic-release": "^23.1.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript-eslint": "^7.10.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "axios": "^1.5.0"
+    "axios": "^1.5.0",
+    "dayjs": "^1.11.11",
+    "diginext-utils": "^3.12.7",
+    "dotenv": "^16.4.5",
+    "form-data": "^4.0.0",
+    "lodash": "^4.17.21",
+    "rimraf": "^5.0.7",
+    "typescript": "^5.4.5",
+    "zod": "^3.23.8"
   }
 }

@@ -1,3 +1,3 @@
 export function random() {
-  return Math.random();
+	return Math.random();
 }

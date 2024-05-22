@@ -1,0 +1,20 @@
+version: '3'
+services:
+    bun-starter:
+        container_name: bun-starter
+        # platform: linux/amd64
+        ports:
+            - '4000:4000'
+        restart: always
+        build:
+            context: .
+            dockerfile: Dockerfile
+            platforms:
+                - linux/amd64
+            #   - linux/arm64
+            tags:
+                - digitop/bun-starter:dev
+            cache_to:
+                - type=inline
+        env_file:
+            - .env

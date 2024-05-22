@@ -1,0 +1,18 @@
+{
+	"editor.tabSize": 4,
+	"editor.detectIndentation": false,
+	"search.exclude": {
+		"package-lock.json": true
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit",
+		"source.addMissingImports": "explicit"
+	},
+	"[prisma]": {
+		"editor.defaultFormatter": "Prisma.prisma"
+	},
+	"files.associations": {
+		"*.scss": "postcss"
+	}
+}
