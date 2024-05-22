@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+	<head>
+		<title><%= meta_title %></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+
+		<meta property="og:description" content="<%= meta_description %>" />
+		<meta property="og:image" content="<%= base_url %>/share.png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="600" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="<%= meta_title %>" />
+		<meta name="twitter:description" content="<%= meta_description %>" />
+		<meta name="twitter:image" content="<%= base_url %>/share.png" />
+		<meta name="twitter:image:width" content="1200" />
+		<meta name="twitter:image:height" content="600" />
+
+		<!-- Tailwind CSS -->
+		<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+
+		<style type="text/tailwindcss">
+			@tailwind base;
+			@tailwind components;
+			@tailwind utilities;
+
+			*,
+			::before,
+			::after {
+				border-width: 0;
+			}
+
+			html,
+			body {
+				@apply leading-[normal] m-0;
+				position: relative;
+			}
+		</style>
+
+		<script>
+			tailwind.config = {
+				// darkMode: 'selector',
+				theme: {
+					extend: {
+						colors: {
+							clifford: '#da373d',
+						},
+					},
+				},
+			};
+		</script>
+
+		<!-- Google tag (gtag.js) -->
+		<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-X7D0F722T4"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+			gtag('config', 'G-X7D0F722T4');
+		</script> -->
+	</head>
+	<body class="bg-white dark:bg-gray-900">
+		<main class="p-8 w-full min-h-svh flex justify-center">
+			<div
+				id="content"
+				class="prose dark:prose-invert w-full max-w-4xl pt-8 pb-20 flex items-center justify-center"
+			>
+				<div class="text-center">
+					<div class="text-center flex items-center justify-center">
+						<img src="/icon-300x300.png" alt="Bun Starter" width="300" height="300" />
+					</div>
+					<h1 class="text-lg">A starter template for Bun</h1>
+
+					<a href="https://x.com/goon_nguyen" target="_blank" rel="noopener noreferrer">
+						<button
+							class="rounded-3xl bg-sky-500 text-white px-8 py-2 hover:bg-sky-600 active:bg-sky-700 transition-all"
+						>
+							👉 Follow me on X
+						</button>
+					</a>
+					<p>Version: <%= locals?.version %></p>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>

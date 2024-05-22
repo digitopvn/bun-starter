@@ -1,15 +1,25 @@
-import { resolve } from 'path';
+import { env } from 'bun';
 import { STATIC_PATH } from './src/config';
+import esj from 'ejs';
+
+import pkg from './package.json';
 
 const server = Bun.serve({
 	port: process.env.PORT || 3001,
-	fetch(req) {
+	async fetch(req) {
 		const url = new URL(req.url);
 
 		if (url.pathname === '/') {
-			return new Response('Hello World!');
+			const html = await esj.renderFile('./src/views/home.ejs', {
+				meta_title: 'Bun Starter | Home',
+				meta_description: 'This is the home page',
+				base_url: env.BASE_URL || 'http://localhost:3001',
+				version: pkg.version || 'N/A',
+			});
+			return new Response(html, { headers: { 'content-type': 'text/html' } });
+			// return new Response('Hello World!');
 		} else if (url.pathname === '/json') {
-			return new Response(JSON.stringify({ hello: 'world' }), {
+			return new Response(JSON.stringify({ status: 1, hello: 'world', messages: [] }), {
 				headers: { 'content-type': 'application/json' },
 			});
 		} else {
