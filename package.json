@@ -82,7 +82,7 @@
     "lint-staged": "^15.2.4",
     "prettier": "^3.2.5",
     "run-script-os": "^1.1.6",
-    "semantic-release": "^23.1.1",
+    "semantic-release": "^24.0.0",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "tslint-config-prettier": "^1.18.0",
